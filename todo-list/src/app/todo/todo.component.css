@@ -1,0 +1,42 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+}
+
+.add-card-container {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.notes-grid {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  gap: 20px; /* Space between notes */
+}
+
+.note-item {
+  background-color: #640468;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for notes */
+.note-item:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}

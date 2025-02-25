@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NotesService } from '../notes.service';
+import { Note } from '../todo-model';
 
 @Component({
   selector: 'app-add-card',
@@ -9,13 +10,15 @@ import { NotesService } from '../notes.service';
   styleUrl: './add-card.component.css',
 })
 export class AddCardComponent {
-  note = {
+  note: Note = {
     title: '',
     content: '',
+    id: 0,
   };
+
   constructor(public notesService: NotesService) {}
 
-  OnaAddtoNote() {
+  OnAddtoNote() {
     this.notesService.AddNote(this.note.title, this.note.content).subscribe({
       next: (res) => console.log(res),
     });

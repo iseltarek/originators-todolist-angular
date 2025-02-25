@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="grid-container">
+    <div class="add-card-container">
+      <app-add-card></app-add-card>
+    </div>
+    <ul class="notes-grid">
+      @for (note of notes; track note.id) {
+      <li class="note-item">
+        <app-todo-card [note]="note" />
+      </li>
+      }
+    </ul>
+  </div>
+</div>
