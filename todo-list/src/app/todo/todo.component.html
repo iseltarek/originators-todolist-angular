@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="grid-container">
+    <div class="add-card-container">
+      <app-add-card></app-add-card>
+    </div>
+    <ul class="notes-grid">
+      @for (note of notes; track note._id) {
+      <li class="note-item">
+        <app-todo-card [note]="note" (noteDeleted)="onNoteDeleted($event)" />
+      </li>
+      }
+    </ul>
+  </div>
+  <div class="logout">
+    <button (click)="OnLogOut()">logout</button>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="signup-container">
+  <form>
+    <div class="formContainer">
+      <h1>Sign in</h1>
+      <hr />
+      <label for="text">
+        <strong>User name</strong>
+      </label>
+      <input
+        type="text"
+        ng
+        placeholder="Enter user name"
+        name="username"
+        [(ngModel)]="username"
+        required
+      />
+      <label for="password">
+        <strong>Password</strong>
+      </label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+      @if(errorMessage){
+      <p class="error-message">{{ errorMessage }}</p>
+      }
+      <div>
+        <button type="submit" class="signup" (click)="OnsignIn()">Login</button>
+      </div>
+      <div>
+        <button type="submit" class="signup" (click)="Onsignup()">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
