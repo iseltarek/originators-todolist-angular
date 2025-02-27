@@ -2,16 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { error } from 'node:console';
-import {
-  BehaviorSubject,
-  catchError,
-  map,
-  Observable,
-  of,
-  tap,
-  throwError,
-} from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment.development';
+import { AuthResponse } from '../todo/todo-model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,23 +12,22 @@ import { environment } from '../../environments/environment.development';
 export class AuthService {
   baseUrl = 'http://localhost:3000';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-
   constructor(public httpClient: HttpClient, public router: Router) {}
 
   login(name: string, password: string): Observable<any> {
     console.log(name);
     console.log(password);
     return this.httpClient
-      .post(`${this.baseUrl}/auth/login`, {
+      .post<AuthResponse>(`${this.baseUrl}/auth/login`, {
         name,
         password,
       })
       .pipe(
-        map((user) => {
-          if (user) {
-            localStorage.setItem('currentUser', JSON.stringify(user));
+        map((response: AuthResponse) => {
+          if (response) {
+            localStorage.setItem('token', response.verificationToken);
           }
-          return user;
+          return response;
         })
       );
   }
