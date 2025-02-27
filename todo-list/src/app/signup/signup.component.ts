@@ -11,23 +11,17 @@ import { Router } from '@angular/router';
 export class SignupComponent {
   username = '';
   password = '';
-
+  errorMessage = '';
   constructor(private authService: AuthService, private router: Router) {}
 
   Onsignup() {
     this.authService.signup(this.username, this.password).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.router.navigate(['/todo']);
+      next: () => {
+        this.router.navigate(['/login']);
       },
-    });
-  }
-
-  OnsignIn() {
-    this.authService.login(this.username, this.password).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.router.navigate(['/todo']);
+      error: (err) => {
+        this.errorMessage =
+          err.error.message || 'Signup failed. Please try again.';
       },
     });
   }

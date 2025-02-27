@@ -1,7 +1,7 @@
 <div class="signup-container">
   <form>
     <div class="formContainer">
-      <h1>Sign Up Form</h1>
+      <h1>Sign Up</h1>
       <hr />
       <label for="text">
         <strong>User name</strong>
@@ -24,13 +24,13 @@
         [(ngModel)]="password"
         required
       />
+      @if(errorMessage){
+      <p class="error-message">{{ errorMessage }}</p>
+      }
       <div>
         <button type="submit" class="signup" (click)="Onsignup()">
           Sign Up
         </button>
-      </div>
-      <div>
-        <button type="submit" class="signup" (click)="OnsignIn()">Login</button>
       </div>
     </div>
   </form>

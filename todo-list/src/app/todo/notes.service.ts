@@ -7,7 +7,7 @@ import { Note } from './todo-model';
   providedIn: 'root',
 })
 export class NotesService {
-  baseUrl = '';
+  baseUrl = 'http://localhost:3000/api';
   constructor(public httpClient: HttpClient) {}
 
   getNote(userId: number): Observable<Note[]> {
