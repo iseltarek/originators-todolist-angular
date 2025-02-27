@@ -14,20 +14,34 @@ import { AuthService } from '../services/auth.service';
 })
 export class TodoComponent {
   notes!: Note[];
+
   constructor(
     public NotesService: NotesService,
     public router: Router,
     public authService: AuthService
   ) {}
 
-  OnLogOut() {
-    this.authService.logout();
-  }
   ngOnInit() {
-    this.NotesService.getNote(3).subscribe({
+    this.NotesService.getAllNotes().subscribe({
       next: (res) => {
         this.notes = res;
       },
     });
+  }
+
+  loadNotes() {
+    // this.NotesService.getAllNotes().subscribe({
+    //   next: (res) => {
+    //     this.notes = res;
+    //   },
+    // });
+  }
+
+  onNoteDeleted(noteId: string) {
+    this.notes = this.notes.filter((note) => note._id !== noteId);
+  }
+
+  OnLogOut() {
+    this.authService.logout();
   }
 }

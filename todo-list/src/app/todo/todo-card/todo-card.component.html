@@ -1,8 +1,11 @@
 <div class="note-card">
   <h3 class="note-title">{{ note.title }}</h3>
-  <p class="note-content">{{ note.content }}</p>
+  <mat-checkbox
+    (change)="onCheckChange($event)"
+    class="checkbox"
+  ></mat-checkbox>
   <div class="note-actions">
-    <button class="delete-btn" (onclick)="deletenote()">Delete</button>
-    <button class="delete-btn" (onclick)="editnote()">Edit</button>
+    <button class="delete-btn" (click)="OnDeleteNote()">Delete</button>
+    <button class="delete-btn" (click)="editnote()">Edit</button>
   </div>
 </div>

@@ -10,17 +10,16 @@ import { Note } from '../todo-model';
   styleUrl: './add-card.component.css',
 })
 export class AddCardComponent {
-  note: Note = {
-    title: '',
-    content: '',
-    id: 0,
-  };
+  OnAddtoNote() {
+    throw new Error('Method not implemented.');
+  }
+  note!: Note;
 
   constructor(public notesService: NotesService) {}
 
-  OnAddtoNote() {
-    this.notesService.AddNote(this.note.title, this.note.content).subscribe({
-      next: (res) => console.log(res),
-    });
-  }
+  // OnAddtoNote() {
+  //   this.notesService.AddNote().subscribe({
+  //     next: (res) => console.log(res),
+  //   });
+  // }
 }

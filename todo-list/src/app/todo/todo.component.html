@@ -4,20 +4,11 @@
       <app-add-card></app-add-card>
     </div>
     <ul class="notes-grid">
-      <!-- @for (note of notes; track note.id) {
+      @for (note of notes; track note._id) {
       <li class="note-item">
-        <app-todo-card [note]="note" />
+        <app-todo-card [note]="note" (noteDeleted)="onNoteDeleted($event)" />
       </li>
-      } -->
-      <li class="note-item">
-        <app-todo-card />
-      </li>
-      <li class="note-item">
-        <app-todo-card />
-      </li>
-      <li class="note-item">
-        <app-todo-card />
-      </li>
+      }
     </ul>
   </div>
   <div class="logout">
